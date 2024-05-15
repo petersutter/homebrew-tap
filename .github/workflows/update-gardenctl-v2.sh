@@ -31,6 +31,9 @@ then
       exit 1
 fi
 
+# Remove the 'v' prefix from the tag if it exists
+version=${tag#v}
+
 echo $tag
 echo $darwin_sha_amd64
 echo $darwin_sha_arm64
@@ -45,7 +48,7 @@ cat > gardenctl-v2.rb << EOF
 class GardenctlV2 < Formula
   desc "Command-line tool for managing Gardener clusters"
   homepage "https://gardener.cloud"
-  version "$tag"
+  version "$version"
 
   depends_on "gardener/tap/gardenlogin"
 
