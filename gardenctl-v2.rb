@@ -5,7 +5,7 @@
 class GardenctlV2 < Formula
   desc "Command-line tool for managing Gardener clusters"
   homepage "https://gardener.cloud"
-  version "v2.0.9-dev"
+  version "2.0.9-dev"
 
   depends_on "gardener/tap/gardenlogin"
 
