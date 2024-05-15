@@ -38,8 +38,12 @@ echo $linux_sha_amd64
 echo $linux_sha_arm64
 
 cat > gardenctl-v2.rb << EOF
+# typed: true
+# frozen_string_literal: true
+
+# GardenctlV2 is a formula for installing Gardenctl-v2
 class GardenctlV2 < Formula
-  desc "Gardenctl-v2"
+  desc "Command-line tool for managing Gardener clusters"
   homepage "https://gardener.cloud"
   version "$tag"
 
@@ -60,7 +64,7 @@ class GardenctlV2 < Formula
     else
       url "https://github.com/gardener/gardenctl-v2/releases/download/$tag/gardenctl_v2_linux_amd64"
       sha256 "$linux_sha_amd64"
-      depends_on :arch => :x86_64
+      depends_on arch: :x86_64
     end
   end
 
@@ -69,7 +73,8 @@ class GardenctlV2 < Formula
 
     print "\n[HINT]\n"
     print "  Consider to add the gardenctl startup script to your shell profile.\n"
-    print "  It contains various tweaks, such as setting environment variables, loading completions and adding some helpful aliases or functions.\n"
+    print "  It contains various tweaks, such as setting environment variables,\n"
+    print "  loading completions and adding some helpful aliases or functions.\n"
     print "  Run \`gardenctl rc --help\` for more information.\n\n"
   end
 
@@ -77,5 +82,4 @@ class GardenctlV2 < Formula
     system "#{bin}/gardenctl", "version"
   end
 end
-
 EOF
